@@ -1,0 +1,10 @@
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\bin\Debug\GuessNumbers.exe.config
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\bin\Debug\GuessNumbers.exe
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\bin\Debug\GuessNumbers.pdb
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.csprojResolveAssemblyReference.cache
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.MainWindow.resources
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.Properties.Resources.resources
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.csproj.GenerateResource.cache
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.csproj.CoreCompileInputs.cache
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.exe
+C:\projects\csharp-projects\PracticeProjects\GuessNumbers\obj\Debug\GuessNumbers.pdb
