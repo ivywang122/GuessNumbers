@@ -259,5 +259,9 @@ namespace GuessNumbers
         }
 
         #endregion 重玩一次
+
+        // 電腦去產生一個不重複數字
+
+        //
     }
 }
