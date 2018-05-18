@@ -40,6 +40,7 @@
             this.NotCorrectNumLabel = new System.Windows.Forms.Label();
             this.TextLabel = new System.Windows.Forms.Label();
             this.TextLabel2 = new System.Windows.Forms.Label();
+            this.HowToLabel = new System.Windows.Forms.Label();
             this.TextBoxPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,9 +118,10 @@
             this.RestartButton.Name = "RestartButton";
             this.RestartButton.Size = new System.Drawing.Size(193, 93);
             this.RestartButton.TabIndex = 5;
-            this.RestartButton.Text = "重猜";
+            this.RestartButton.Text = "重玩";
             this.RestartButton.UseCompatibleTextRendering = true;
             this.RestartButton.UseVisualStyleBackColor = true;
+            this.RestartButton.Click += new System.EventHandler(this.RestartButton_Click);
             // 
             // AIGuessButton
             // 
@@ -130,7 +132,7 @@
             this.AIGuessButton.Name = "AIGuessButton";
             this.AIGuessButton.Size = new System.Drawing.Size(312, 93);
             this.AIGuessButton.TabIndex = 6;
-            this.AIGuessButton.Text = "給電腦猜";
+            this.AIGuessButton.Text = "給電腦玩";
             this.AIGuessButton.UseCompatibleTextRendering = true;
             this.AIGuessButton.UseVisualStyleBackColor = true;
             // 
@@ -139,7 +141,7 @@
             this.CorrectNumLabel.AutoSize = true;
             this.CorrectNumLabel.Font = new System.Drawing.Font("微軟正黑體", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.CorrectNumLabel.ForeColor = System.Drawing.Color.Turquoise;
-            this.CorrectNumLabel.Location = new System.Drawing.Point(75, 495);
+            this.CorrectNumLabel.Location = new System.Drawing.Point(79, 547);
             this.CorrectNumLabel.Name = "CorrectNumLabel";
             this.CorrectNumLabel.Size = new System.Drawing.Size(56, 61);
             this.CorrectNumLabel.TabIndex = 7;
@@ -151,7 +153,7 @@
             this.NotCorrectNumLabel.AutoSize = true;
             this.NotCorrectNumLabel.Font = new System.Drawing.Font("微軟正黑體", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.NotCorrectNumLabel.ForeColor = System.Drawing.Color.DeepPink;
-            this.NotCorrectNumLabel.Location = new System.Drawing.Point(268, 495);
+            this.NotCorrectNumLabel.Location = new System.Drawing.Point(272, 547);
             this.NotCorrectNumLabel.Name = "NotCorrectNumLabel";
             this.NotCorrectNumLabel.Size = new System.Drawing.Size(56, 61);
             this.NotCorrectNumLabel.TabIndex = 8;
@@ -163,7 +165,7 @@
             this.TextLabel.AutoSize = true;
             this.TextLabel.Font = new System.Drawing.Font("微軟正黑體", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.TextLabel.ForeColor = System.Drawing.Color.Turquoise;
-            this.TextLabel.Location = new System.Drawing.Point(127, 495);
+            this.TextLabel.Location = new System.Drawing.Point(131, 547);
             this.TextLabel.Name = "TextLabel";
             this.TextLabel.Size = new System.Drawing.Size(123, 61);
             this.TextLabel.TabIndex = 9;
@@ -175,12 +177,23 @@
             this.TextLabel2.AutoSize = true;
             this.TextLabel2.Font = new System.Drawing.Font("微軟正黑體", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
             this.TextLabel2.ForeColor = System.Drawing.Color.DeepPink;
-            this.TextLabel2.Location = new System.Drawing.Point(319, 495);
+            this.TextLabel2.Location = new System.Drawing.Point(323, 547);
             this.TextLabel2.Name = "TextLabel2";
             this.TextLabel2.Size = new System.Drawing.Size(171, 61);
             this.TextLabel2.TabIndex = 10;
             this.TextLabel2.Text = "位置錯";
             this.TextLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // HowToLabel
+            // 
+            this.HowToLabel.AutoSize = true;
+            this.HowToLabel.Font = new System.Drawing.Font("微軟正黑體", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.HowToLabel.ForeColor = System.Drawing.Color.Snow;
+            this.HowToLabel.Location = new System.Drawing.Point(31, 467);
+            this.HowToLabel.Name = "HowToLabel";
+            this.HowToLabel.Size = new System.Drawing.Size(303, 27);
+            this.HowToLabel.TabIndex = 11;
+            this.HowToLabel.Text = "玩法：請輸入1~9不重複的數字";
             // 
             // MainWindow
             // 
@@ -188,6 +201,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(584, 761);
+            this.Controls.Add(this.HowToLabel);
             this.Controls.Add(this.TextLabel2);
             this.Controls.Add(this.TextLabel);
             this.Controls.Add(this.NotCorrectNumLabel);
@@ -224,6 +238,7 @@
         private System.Windows.Forms.Label NotCorrectNumLabel;
         private System.Windows.Forms.Label TextLabel;
         private System.Windows.Forms.Label TextLabel2;
+        private System.Windows.Forms.Label HowToLabel;
     }
 }
 
