@@ -26,6 +26,11 @@ namespace GuessNumbers
         public int maxRounds = 20; // 最大回合數
         public int[] randomNums = new int[4]; // 亂數數字
         public int[] userNums = new int[4]; // 玩家猜的數字
+        public int[] aiNums = new int[4]; // 電腦猜的數字
+        public List<int> rightLists = new List<int>(); // 電腦猜過的正確數字
+        public List<int> wrongLists = new List<int>(); // 電腦猜過的錯的數字
+        public int[] correctNums = new int[4]; // 電腦完全猜對的數字
+        private Random rnd = new Random();
 
         #endregion 設定變數
 
@@ -261,7 +266,171 @@ namespace GuessNumbers
         #endregion 重玩一次
 
         // 電腦去產生一個不重複數字
+        public void AiCreateRandomNums()
+        {
+            if (rightLists.Count == 0)
+            {
+                MessageBox.Show("第一次猜");
+                for (int i = 0; i < randomNums.Length; i++)
+                {
+                    aiNums[i] = rnd.Next(1, 10);
 
-        //
+                    for (int j = 0; j < i;)
+                    {
+                        if (aiNums[i] == aiNums[j])
+                        {
+                            aiNums[i] = rnd.Next(1, 10);
+                            j = 0;
+                        }
+                        else
+                        {
+                            j++;
+                        }
+                    }
+                }
+            }
+            else
+            {
+                /* for (int i = 0; i < randomNums.Length; i++)
+                 {
+                     // 排除已經完全猜對的位置
+                     if (correctNums[i] == 0)
+                     {
+                         //aiNums[i] = rnd.Next(1, 10);
+                         //aiNums[i] = ReturnNotWrongNum(aiNums[i]);
+                     }
+                 }*/
+            }
+        }
+
+        // 檢查是否是猜錯的數字
+        public int ReturnNotWrongNum(int num)
+        {
+            // 排除猜錯的數字
+            for (int i = 0; i < wrongLists.Count;)
+            {
+                if (num == wrongLists[i])
+                {
+                    num = rnd.Next(1, 10);
+                    i = 0;
+                }
+                else
+                {
+                    i++;
+                }
+            }
+
+            return num;
+        }
+
+        // 比對完全猜中
+        public void CompareAiNumPosition()
+        {
+            int correct = 0;
+            for (int i = 0; i < randomNums.Length; i++)
+            {
+                if (aiNums[i] == randomNums[i])
+                {
+                    correctNums[i] = aiNums[i];
+                    correct++;
+                }
+            }
+            CompareAiNumHit(correct);
+            CorrectNumLabel.Text = correct.ToString();
+        }
+
+        // 比對猜中幾個
+        public void CompareAiNumHit(int correct)
+        {
+            int guessedNums = 0; // 猜中幾個數字
+            for (int i = 0; i < randomNums.Length; i++)
+            {
+                for (int j = 0; j < randomNums.Length; j++)
+                {
+                    if (randomNums[i] == aiNums[j])
+                    {
+                        guessedNums++;
+                        PushRightNum(aiNums[j]);
+                    }
+                }
+                PushWrongNum(aiNums[i]);
+            }
+            NotCorrectNumLabel.Text = (guessedNums - correct).ToString();
+        }
+
+        // 猜中的數字放到 List
+        public void PushRightNum(int num)
+        {
+            rightLists.Add(num);
+            for (int i = 0; i < rightLists.Count; i++)
+            {
+                for (int j = 0; j < i;)
+                {
+                    if (rightLists[i] == rightLists[j] && rightLists[i] != 0)
+                    {
+                        rightLists[i] = 0;
+                        j = 0;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+            }
+            rightLists.RemoveAll(it => it == 0);
+        }
+
+        // 猜過錯的放到 List
+        public void PushWrongNum(int num)
+        {
+            wrongLists.Add(num);
+            for (int i = 0; i < wrongLists.Count; i++)
+            {
+                for (int j = 0; j < i;)
+                {
+                    if (wrongLists[i] == wrongLists[j] && wrongLists[i] != 0)
+                    {
+                        wrongLists[i] = 0;
+                        j = 0;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+                for (int k = 0; k < rightLists.Count; k++)
+                {
+                    if (wrongLists[i] == rightLists[k])
+                    {
+                        wrongLists[i] = 0;
+                    }
+                }
+            }
+
+            wrongLists.RemoveAll(it => it == 0);
+        }
+
+        private void AIGuessButton_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("正確數組：" + randomNums[0].ToString() + randomNums[1].ToString() + randomNums[2].ToString() + randomNums[3].ToString());
+
+            AiCreateRandomNums();
+            CompareAiNumPosition();
+            string wn = "";
+            string rn = "";
+
+            foreach (int wnum in wrongLists)
+            {
+                wn += wnum.ToString();
+            }
+            MessageBox.Show("猜錯的數字是：" + wn);
+            foreach (int rnum in rightLists)
+            {
+                rn += rnum.ToString();
+            }
+            MessageBox.Show("猜對的數字是：" + rn.ToString());
+            MessageBox.Show("電腦猜的數組：" + aiNums[0].ToString() + aiNums[1].ToString() + aiNums[2].ToString() + aiNums[3].ToString());
+            MessageBox.Show("已經猜對的數組：" + correctNums[0].ToString() + correctNums[1].ToString() + correctNums[2].ToString() + correctNums[3].ToString());
+        }
     }
 }

@@ -135,6 +135,7 @@
             this.AIGuessButton.Text = "給電腦玩";
             this.AIGuessButton.UseCompatibleTextRendering = true;
             this.AIGuessButton.UseVisualStyleBackColor = true;
+            this.AIGuessButton.Click += new System.EventHandler(this.AIGuessButton_Click);
             // 
             // CorrectNumLabel
             // 
