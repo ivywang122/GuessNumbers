@@ -29,8 +29,10 @@ namespace GuessNumbers
         public int[] randomNums = new int[maxNums]; // 亂數數字組
         public int[] userNums = new int[maxNums]; // 玩家猜的數字組
         public int[] aiNums = new int[maxNums]; // 電腦猜的數字組
+        public List<int> correctLists = new List<int>(); // 電腦猜到完全正確的數字
         public List<int> rightLists = new List<int>(); // 電腦猜過的正確數字
         public List<int> wrongLists = new List<int>(); // 電腦猜過的錯的數字
+        public List<int> guessedLists = new List<int>(); // 電腦已經猜過的數字
         public int[] correctNums = new int[maxNums]; // 電腦完全猜對的數組存放
         public int correctA = 0; // 電腦完全猜對(A)
         public int correctB = 0; // 電腦猜對數字(B)
@@ -265,6 +267,13 @@ namespace GuessNumbers
             CorrectNumLabel.Text = "0";
             NotCorrectNumLabel.Text = "0";
             NumTextBox.Focus();
+            rightLists.Clear();
+            wrongLists.Clear();
+            correctLists.Clear();
+            for (int i = 0; i < maxNums; i++)
+            {
+                correctNums[i] = 0;
+            }
         }
 
         #endregion 重玩(初始化)
@@ -449,11 +458,10 @@ namespace GuessNumbers
 
         public int ReturnRightNum()
         {
-            int num = 0;
             int rndIndex = rnd.Next(0, rightLists.Count);
-            num = rightLists[rndIndex];
+            int num = rightLists[rndIndex];
 
-            foreach (int cn in correctNums)
+            foreach (int cn in correctLists)
             {
                 if (cn == num)
                 {
@@ -472,6 +480,8 @@ namespace GuessNumbers
         public int ReturnNotGuessedNum()
         {
             int num = rnd.Next(1, 10);
+
+            // 數字不是錯的
             for (int i = 0; i < wrongLists.Count;)
             {
                 if (num == wrongLists[i])
@@ -485,11 +495,13 @@ namespace GuessNumbers
                 }
             }
 
+            // 數字不是對的
             foreach (int rn in rightLists)
             {
                 if (rn == num)
                 {
                     num = rnd.Next(1, 10);
+                    // 數字也不是錯的
                     for (int i = 0; i < wrongLists.Count;)
                     {
                         if (num == wrongLists[i])
@@ -520,6 +532,7 @@ namespace GuessNumbers
                 if (aiNums[i] == randomNums[i])
                 {
                     correctNums[i] = aiNums[i];
+                    PushCorrectNum(aiNums[i]);
                     correct++;
                 }
             }
@@ -552,6 +565,31 @@ namespace GuessNumbers
         }
 
         #endregion 比對AI猜中幾個(B)
+
+        #region 完全猜對的數字放到 List
+
+        public void PushCorrectNum(int num)
+        {
+            correctLists.Add(num);
+            for (int i = 0; i < correctLists.Count; i++)
+            {
+                for (int j = 0; j < i;)
+                {
+                    if (correctLists[i] == correctLists[j] && rightLists[i] != 0)
+                    {
+                        correctLists[i] = 0;
+                        j = 0;
+                    }
+                    else
+                    {
+                        j++;
+                    }
+                }
+            }
+            correctLists.RemoveAll(it => it == 0);
+        }
+
+        #endregion 完全猜對的數字放到 List
 
         #region 猜對的數字放到List
 
@@ -617,7 +655,7 @@ namespace GuessNumbers
             AiCreateRandomNums();
             GuessNumsRender(AiNumsToInt());
             CompareAiNumPosition();
-            GuessRoundsShow();
+            if (playRounds < 10) GuessRoundsShow();
             playRounds++;
 
             /*
