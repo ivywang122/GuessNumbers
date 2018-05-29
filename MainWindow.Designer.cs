@@ -53,7 +53,7 @@
             this.NumTextBox.Location = new System.Drawing.Point(76, 12);
             this.NumTextBox.Margin = new System.Windows.Forms.Padding(5);
             this.NumTextBox.Name = "NumTextBox";
-            this.NumTextBox.Size = new System.Drawing.Size(262, 128);
+            this.NumTextBox.Size = new System.Drawing.Size(262, 160);
             this.NumTextBox.TabIndex = 0;
             this.NumTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.NumTextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.NumTextBox_KeyDown);
@@ -90,7 +90,7 @@
             this.CountsLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.CountsLabel.Location = new System.Drawing.Point(30, 197);
             this.CountsLabel.Name = "CountsLabel";
-            this.CountsLabel.Size = new System.Drawing.Size(75, 26);
+            this.CountsLabel.Size = new System.Drawing.Size(96, 35);
             this.CountsLabel.TabIndex = 3;
             this.CountsLabel.Text = "次數：";
             // 
@@ -135,6 +135,7 @@
             this.AIGuessButton.Text = "給電腦玩";
             this.AIGuessButton.UseCompatibleTextRendering = true;
             this.AIGuessButton.UseVisualStyleBackColor = true;
+            this.AIGuessButton.Click += new System.EventHandler(this.AIGuessButton_Click);
             // 
             // CorrectNumLabel
             // 
@@ -143,7 +144,7 @@
             this.CorrectNumLabel.ForeColor = System.Drawing.Color.Turquoise;
             this.CorrectNumLabel.Location = new System.Drawing.Point(79, 547);
             this.CorrectNumLabel.Name = "CorrectNumLabel";
-            this.CorrectNumLabel.Size = new System.Drawing.Size(56, 61);
+            this.CorrectNumLabel.Size = new System.Drawing.Size(69, 76);
             this.CorrectNumLabel.TabIndex = 7;
             this.CorrectNumLabel.Text = "0";
             this.CorrectNumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -155,7 +156,7 @@
             this.NotCorrectNumLabel.ForeColor = System.Drawing.Color.DeepPink;
             this.NotCorrectNumLabel.Location = new System.Drawing.Point(272, 547);
             this.NotCorrectNumLabel.Name = "NotCorrectNumLabel";
-            this.NotCorrectNumLabel.Size = new System.Drawing.Size(56, 61);
+            this.NotCorrectNumLabel.Size = new System.Drawing.Size(69, 76);
             this.NotCorrectNumLabel.TabIndex = 8;
             this.NotCorrectNumLabel.Text = "0";
             this.NotCorrectNumLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -167,7 +168,7 @@
             this.TextLabel.ForeColor = System.Drawing.Color.Turquoise;
             this.TextLabel.Location = new System.Drawing.Point(131, 547);
             this.TextLabel.Name = "TextLabel";
-            this.TextLabel.Size = new System.Drawing.Size(123, 61);
+            this.TextLabel.Size = new System.Drawing.Size(153, 76);
             this.TextLabel.TabIndex = 9;
             this.TextLabel.Text = "猜對";
             this.TextLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -179,7 +180,7 @@
             this.TextLabel2.ForeColor = System.Drawing.Color.DeepPink;
             this.TextLabel2.Location = new System.Drawing.Point(323, 547);
             this.TextLabel2.Name = "TextLabel2";
-            this.TextLabel2.Size = new System.Drawing.Size(171, 61);
+            this.TextLabel2.Size = new System.Drawing.Size(213, 76);
             this.TextLabel2.TabIndex = 10;
             this.TextLabel2.Text = "位置錯";
             this.TextLabel2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -191,13 +192,13 @@
             this.HowToLabel.ForeColor = System.Drawing.Color.Snow;
             this.HowToLabel.Location = new System.Drawing.Point(31, 467);
             this.HowToLabel.Name = "HowToLabel";
-            this.HowToLabel.Size = new System.Drawing.Size(303, 27);
+            this.HowToLabel.Size = new System.Drawing.Size(391, 34);
             this.HowToLabel.TabIndex = 11;
             this.HowToLabel.Text = "玩法：請輸入1~9不重複的數字";
             // 
             // MainWindow
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(584, 761);
