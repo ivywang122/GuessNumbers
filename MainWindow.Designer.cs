@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.NumTextBox = new System.Windows.Forms.TextBox();
             this.TextBoxPanel = new System.Windows.Forms.Panel();
             this.GuessButton = new System.Windows.Forms.Button();
@@ -41,7 +42,12 @@
             this.TextLabel = new System.Windows.Forms.Label();
             this.TextLabel2 = new System.Windows.Forms.Label();
             this.HowToLabel = new System.Windows.Forms.Label();
+            this.ShowResultPannel = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.ResultLabel = new System.Windows.Forms.Label();
+            this.AiTimer = new System.Windows.Forms.Timer(this.components);
             this.TextBoxPanel.SuspendLayout();
+            this.ShowResultPannel.SuspendLayout();
             this.SuspendLayout();
             // 
             // NumTextBox
@@ -80,7 +86,7 @@
             this.GuessButton.TabIndex = 2;
             this.GuessButton.Text = "GO";
             this.GuessButton.UseVisualStyleBackColor = true;
-            this.GuessButton.Click += new System.EventHandler(this.NumTextBox_KeyDown);
+            this.GuessButton.Click += new System.EventHandler(this.NumTextBox_Click);
             // 
             // CountsLabel
             // 
@@ -135,6 +141,7 @@
             this.AIGuessButton.Text = "給電腦玩";
             this.AIGuessButton.UseCompatibleTextRendering = true;
             this.AIGuessButton.UseVisualStyleBackColor = true;
+            this.AIGuessButton.Click += new System.EventHandler(this.AIGuessButton_Click);
             // 
             // CorrectNumLabel
             // 
@@ -195,12 +202,47 @@
             this.HowToLabel.TabIndex = 11;
             this.HowToLabel.Text = "玩法：請輸入1~9不重複的數字";
             // 
+            // ShowResultPannel
+            // 
+            this.ShowResultPannel.BackColor = System.Drawing.Color.Turquoise;
+            this.ShowResultPannel.Controls.Add(this.ResultLabel);
+            this.ShowResultPannel.Controls.Add(this.panel1);
+            this.ShowResultPannel.Location = new System.Drawing.Point(71, 248);
+            this.ShowResultPannel.Name = "ShowResultPannel";
+            this.ShowResultPannel.Size = new System.Drawing.Size(430, 289);
+            this.ShowResultPannel.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.panel1.Location = new System.Drawing.Point(0, 262);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(430, 27);
+            this.panel1.TabIndex = 0;
+            // 
+            // ResultLabel
+            // 
+            this.ResultLabel.AutoSize = true;
+            this.ResultLabel.Font = new System.Drawing.Font("微軟正黑體", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(136)));
+            this.ResultLabel.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.ResultLabel.Location = new System.Drawing.Point(51, 82);
+            this.ResultLabel.Name = "ResultLabel";
+            this.ResultLabel.Size = new System.Drawing.Size(330, 120);
+            this.ResultLabel.TabIndex = 1;
+            this.ResultLabel.Text = "label2";
+            // 
+            // AiTimer
+            // 
+            this.AiTimer.Interval = 1000;
+            this.AiTimer.Tick += new System.EventHandler(this.AiTimer_Tick);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(584, 761);
+            this.Controls.Add(this.ShowResultPannel);
             this.Controls.Add(this.HowToLabel);
             this.Controls.Add(this.TextLabel2);
             this.Controls.Add(this.TextLabel);
@@ -219,6 +261,8 @@
             this.Text = "猜數字遊戲";
             this.TextBoxPanel.ResumeLayout(false);
             this.TextBoxPanel.PerformLayout();
+            this.ShowResultPannel.ResumeLayout(false);
+            this.ShowResultPannel.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -239,6 +283,10 @@
         private System.Windows.Forms.Label TextLabel;
         private System.Windows.Forms.Label TextLabel2;
         private System.Windows.Forms.Label HowToLabel;
+        private System.Windows.Forms.Panel ShowResultPannel;
+        private System.Windows.Forms.Label ResultLabel;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Timer AiTimer;
     }
 }
 
